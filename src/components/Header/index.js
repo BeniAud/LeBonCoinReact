@@ -48,7 +48,7 @@ class Header extends Component {
                   <NavLink to="/publish">DÉPOSER UNE ANNONCE</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/">OFFRES</NavLink>
+                  <NavLink to="/offers">OFFRES</NavLink>
                 </li>
               </ul>
             </div>

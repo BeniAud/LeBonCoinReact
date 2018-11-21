@@ -1,0 +1,99 @@
+.container-offer {
+  display: flex;
+  max-width: 1024px;
+  margin-top: 30px;
+}
+.card-offer-header {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin-bottom: 30px;
+}
+.card-offer {
+  flex: 1;
+}
+.picture-offer {
+  flex: 1;
+  height: 300px;
+  background-color: #d6d0d0;
+}
+
+.title-price-offer {
+  margin: 20px;
+}
+.price-offer {
+  color: #e47346;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.title-offer {
+  font-weight: bold;
+}
+
+.description-offer-title {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card-user-offer {
+  width: 300px;
+  margin-left: 10px;
+}
+
+.card-user-offer-content {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+
+  -webkit-box-shadow: 0px 0px 104px -25px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 104px -25px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 104px -25px rgba(0, 0, 0, 0.75);
+}
+
+.awsome-icon {
+  border-radius: 50%;
+  background-color: #f2a743;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  border: solid #f2a743 3px;
+  overflow: hidden;
+}
+.icon-name-offer {
+  display: flex;
+
+  margin: 20px;
+}
+
+.fa-user {
+  color: white;
+}
+
+.card-user-offer div {
+  font-weight: bold;
+
+  line-height: 40px;
+}
+
+.card-user-offer button {
+  background-color: #e47346;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  width: 90%;
+  line-height: 40px;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  margin: 20px;
+}
+
+.card-user-offer button:hover {
+  cursor: pointer;
+}
