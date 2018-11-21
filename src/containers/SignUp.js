@@ -7,7 +7,10 @@ class SignUp extends Component {
     password: "",
     username: "",
     passwordConfirm: "",
-    message: null
+    message: null,
+    acceptTerms: false,
+    receiveOffers: false,
+    passwordIncorrect: false
   };
 
   handleChange = event => {
@@ -45,11 +48,21 @@ class SignUp extends Component {
         });
       event.preventDefault();
     } else {
-      this.setState({ message: "les mots de passe ne sont pas identiques" });
+      this.setState({
+        message: "les mots de passe ne sont pas identiques",
+        passwordIncorrect: true
+      });
       event.preventDefault();
     }
+    // event.preventDefault();
   };
-
+  renderError() {
+    if (this.state.errorMessage) {
+      return <p>{this.state.errorMessage}</p>;
+    } else {
+      return null;
+    }
+  }
   render() {
     return (
       <div className="container-signup ">
@@ -141,6 +154,11 @@ class SignUp extends Component {
                     id="password"
                     name="password"
                     type="password"
+                    className={
+                      this.state.passwordIncorrect === true
+                        ? "password-red"
+                        : ""
+                    }
                     value={this.state.password}
                     onChange={this.handleChange}
                   />
@@ -162,31 +180,38 @@ class SignUp extends Component {
               </div>
             </div>
             <div className="checkbox">
-              <div className="checkbox-email">
-                <div>
-                  <input type="checkbox" id="myCheck" name="CGU" />
-                </div>
-                <div>
-                  <span>
-                    Je souhaite recevoir des offres des partenaires du site
-                    leboncoin susceptibles de m'intéresser
-                  </span>
-                </div>
-              </div>
-              <div className="checkbox-email">
-                <div>
-                  <input type="checkbox" id="myCheck" name="CGU" />
-                </div>
-                <div>
-                  <span>
-                    "J'accepte les{" "}
-                    <a href="https://www.leboncoin.fr/dc/cgv/0">
-                      Conditions Générales de Vente"
-                    </a>{" "}
-                  </span>
-                </div>
-              </div>
+              <input
+                type="checkbox"
+                id="receiveOffers"
+                name="receiveOffers"
+                value={this.state.receiveOffers}
+                onChange={this.handleChange}
+              />
+
+              <label htmlFor="receiveOffers">
+                Je souhaite recevoir des offres des partenaires du site
+                leboncoin susceptibles de m'intéresser
+              </label>
             </div>
+
+            <div className="checkbox">
+              <input
+                type="checkbox"
+                id="acceptTerms"
+                name="acceptTerms"
+                value={this.state.acceptTerms}
+                onChange={this.handleChange}
+              />
+
+              <label htmlFor="acceptTerms">
+                "J'accepte le
+                <a href="https://www.leboncoin.fr/dc/cgv/0">
+                  Conditions Générales de Vente"
+                </a>
+              </label>
+            </div>
+            {this.renderError()}
+
             <button className="submit-btn" type="submit">
               Créer mon compte personnel
             </button>

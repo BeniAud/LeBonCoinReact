@@ -24,13 +24,6 @@ class LogIn extends Component {
       })
       .then(response => {
         console.log(response.data);
-        // {
-        //   account: {
-        //     username: "farid";
-        //   }
-        //   token: "WKOCjBUoSZRfbicPLNVlCzrZPGKNA2YkcKBB9vwb8r9ysZJgoGCjJu0bhXJZgOZ8";
-        //   _id: "5bf3c652d3e6e00014dd74bf";
-        // }
 
         if (response.data && response.data.token) {
           this.props.setUser({

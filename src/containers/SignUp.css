@@ -84,5 +84,8 @@
 }
 
 .messageerror {
-  color: #f36b36;
+  color: red;
+}
+.password-red {
+  border: 1px solid red;
 }

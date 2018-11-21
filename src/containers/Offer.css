@@ -5,6 +5,7 @@
   flex-direction: row;
   justify-content: space-between;
   width: 70%;
+  padding-left: 100px;
 }
 .annonceSelectionnee {
   display: block;
@@ -67,4 +68,7 @@
 }
 .fa-mobile-alt:before {
   padding-right: 20px;
+}
+.offerDescription {
+  padding-left: 100px;
 }

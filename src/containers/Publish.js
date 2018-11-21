@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./Publish.css";
-import { Link } from "react-router-dom";
+
 class Publish extends Component {
   state = {
     title: "",

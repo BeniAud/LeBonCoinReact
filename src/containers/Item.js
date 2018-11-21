@@ -17,7 +17,12 @@ class Item extends Component {
           className="container-annonce"
           to={"/offer/" + this.props.annonces[i]._id}
         >
-          <img src={"/assets/img/placeholder.png"} width="150" height="100" />
+          <img
+            src={"/assets/img/placeholder.png"}
+            width="150"
+            height="110"
+            alt="imgpublish"
+          />
           <div className="infoAnnonce">
             <div className="titleDescription">
               <p>

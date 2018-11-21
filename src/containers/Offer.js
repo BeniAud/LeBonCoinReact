@@ -33,8 +33,10 @@ class Offer extends Component {
               </button>
             </div>
           </div>
-          <h3>Description :</h3>
-          {this.state.annonce.description}
+          <div className="offerDescription">
+            <h3>Description :</h3>
+            {this.state.annonce.description}
+          </div>
         </div>
       );
     }
