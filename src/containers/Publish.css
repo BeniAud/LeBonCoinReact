@@ -1,0 +1,40 @@
+.publish {
+  justify-content: left;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  display: block;
+  background-color: white;
+  margin-top: 50px;
+  padding: 20px 20px 20px 20px;
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 4px 2px rgba(191, 189, 191, 1);
+  -moz-box-shadow: 0px 0px 4px 2px rgba(191, 189, 191, 1);
+  box-shadow: 0px 0px 4px 2px rgba(191, 189, 191, 1);
+}
+.input-publish {
+  border: solid 1px rgba(57, 57, 57, 0.3);
+  border-radius: 3px;
+  outline: none;
+  font-size: 16px;
+  padding: 10px;
+  width: 500px;
+}
+.submit-btn {
+  background-color: #4585d0;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 20px 100px;
+  width: 520px;
+  font-size: 16px;
+}
+.votreannonce {
+  color: #666666;
+}
+.votreannonce h2::after {
+  content: "";
+  display: block;
+  height: 30px;
+  width: 400px;
+  border-bottom: solid 2px #f36b36;
+}

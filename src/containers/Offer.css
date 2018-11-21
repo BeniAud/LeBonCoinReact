@@ -1,0 +1,70 @@
+.container-selection {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 70%;
+}
+.annonceSelectionnee {
+  display: block;
+  background-color: white;
+  margin-top: 50px;
+  padding: 20px 20px 20px 20px;
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 4px 2px rgba(191, 189, 191, 1);
+  -moz-box-shadow: 0px 0px 4px 2px rgba(191, 189, 191, 1);
+  box-shadow: 0px 0px 4px 2px rgba(191, 189, 191, 1);
+}
+.PHOTO {
+  margin-top: 20px;
+  width: 400px;
+  height: 200px;
+  background-color: #d6d0d0;
+}
+.buttonContact {
+  background-color: #f16b3f;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 7px 20px;
+  width: 200px;
+  height: 50px;
+  font-size: 16px;
+}
+.pageContact {
+  display: block;
+  justify-content: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  background-color: white;
+  margin-top: 50px;
+  margin-left: 50px;
+
+  padding: 20px 20px 20px 20px;
+  width: 30%;
+  height: 180px;
+  -webkit-box-shadow: 0px 0px 4px 2px rgba(191, 189, 191, 1);
+  -moz-box-shadow: 0px 0px 4px 2px rgba(191, 189, 191, 1);
+  box-shadow: 0px 0px 4px 2px rgba(191, 189, 191, 1);
+}
+.userCreator {
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+.fa-user-circle:before {
+  color: #f1a743;
+  text-align: center;
+  padding-left: 60px;
+}
+.titleSelection {
+  font-weight: bold;
+}
+.priceSelection {
+  font-weight: bold;
+  color: #f16b3f;
+}
+.fa-mobile-alt:before {
+  padding-right: 20px;
+}
