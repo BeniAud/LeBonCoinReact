@@ -6,8 +6,10 @@ import Home from "./containers/Home";
 import SignUp from "./containers/SignUp";
 import LogIn from "./containers/LogIn";
 import Profile from "./containers/Profile";
-import Publish from "./containers/Publish";
+import Publish from "./containers/Publish/Publish";
 import Header from "./components/Header";
+import Offer from "./containers/Offer/Offer";
+import Offers from "./containers/Offers/Offers";
 
 class App extends Component {
   state = {
@@ -78,6 +80,13 @@ class App extends Component {
               path="/log_in"
               render={props => (
                 <LogIn {...props} user={user} setUser={this.setUser} />
+              )}
+            />
+            <Route path="/offer/:id" render={props => <Offer {...props} />} />
+            <Route
+              path="/offers/"
+              render={props => (
+                <Offers {...props} user={user} setUser={this.setUser} />
               )}
             />
             <Route

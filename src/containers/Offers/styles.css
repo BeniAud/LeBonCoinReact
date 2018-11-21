@@ -1,0 +1,35 @@
+.container-offers {
+  margin-top: 50px;
+}
+.card-offers {
+  background-color: white;
+  display: flex;
+  margin: 5px auto;
+  width: 80%;
+}
+.card-offers:hover {
+  cursor: pointer;
+  -webkit-box-shadow: -1px 0px 39px -11px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 0px 39px -11px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 0px 39px -11px rgba(0, 0, 0, 0.75);
+}
+
+.picture-offers {
+  background-color: #fafafa;
+  display: flex;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+}
+
+.title-offers {
+  color: #466bb8;
+  margin: 10px;
+  font-weight: bold;
+}
+
+.price-offers {
+  color: #e47346;
+  margin: 10px;
+  font-weight: bold;
+}

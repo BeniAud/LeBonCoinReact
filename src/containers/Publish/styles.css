@@ -1,0 +1,32 @@
+.form-card-publish {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.form-card-publish h1 {
+  color: white;
+  background-color: #666666;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.form-card-publish input,
+.form-card-publish textarea {
+  margin-bottom: 20px;
+  width: 50%;
+  margin-left: 10px;
+}
+
+.form-card-publish label {
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+.btn-publish {
+  background-color: #5083cd;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 50px;
+  border: none;
+  margin-top: 20px;
+}
