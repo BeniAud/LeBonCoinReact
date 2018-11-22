@@ -1,6 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import Item from "./Item";
+import OffersFilter from "./OffersFilter";
 // import "./Home.css";
 // import Publish from "./Publish";
 
@@ -8,29 +9,31 @@ class Home extends React.Component {
   state = {
     annonces: []
   };
-
+  updateAnnonceList = annonces => {
+    // annonces -> tableaux d'annonces
+    this.setState({
+      annonces: annonces
+    });
+  };
   render() {
-    return <Item annonces={this.state.annonces} />;
-  }
-  componentDidMount() {
-    Axios.get("https://leboncoin-api.herokuapp.com/api/offer").then(
-      response => {
-        this.setState({
-          annonces: response.data
-        });
-      }
+    return (
+      <div>
+        <OffersFilter updateAnnonceList={this.updateAnnonceList} />
+        <Item annonces={this.state.annonces} />;
+      </div>
     );
   }
-  //     .then(response => {
-  //       console.log(response.data);
-
-  //       if (response.data) {
-  //       }
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }
+  componentDidMount() {
+    Axios.get("https://leboncoin-api.herokuapp.com/api/offer", {
+      params: {
+        limit: 25
+      }
+    }).then(response => {
+      this.setState({
+        annonces: response.data
+      });
+    });
+  }
 }
 
 export default Home;

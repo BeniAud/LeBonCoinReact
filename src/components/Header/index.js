@@ -45,10 +45,12 @@ class Header extends Component {
             <div className="menu-left">
               <ul>
                 <li>
-                  <NavLink to="/publish">DÉPOSER UNE ANNONCE</NavLink>
+                  <NavLink to="/publish" activeStyle={{ color: "blue" }}>
+                    DÉPOSER UNE ANNONCE
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/">OFFRES</NavLink>
+                  <NavLink to="/">OFFRES </NavLink>
                 </li>
               </ul>
             </div>

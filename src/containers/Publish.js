@@ -16,7 +16,9 @@ class Publish extends Component {
 
     this.setState({ [name]: value });
   };
-
+  // redirectToLoginPage=()=>{
+  //   this.props.history.push("/log_in/");
+  // };
   onSubmit = event => {
     axios
       .post(
@@ -41,7 +43,7 @@ class Publish extends Component {
       .catch(err => {
         console.log(err);
       });
-    event.preventDefault();
+    event.preventDefault(); // eviter le comportement par defaut
   };
 
   render() {

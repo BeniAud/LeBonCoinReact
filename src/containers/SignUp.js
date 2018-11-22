@@ -172,6 +172,11 @@ class SignUp extends Component {
                     id="passwordConfirm"
                     name="passwordConfirm"
                     type="password"
+                    className={
+                      this.state.passwordIncorrect === true
+                        ? "password-red"
+                        : ""
+                    }
                     value={this.state.passwordConfirm}
                     onChange={this.handleChange}
                   />
