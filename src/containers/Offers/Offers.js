@@ -9,9 +9,19 @@ class Offer extends React.Component {
     priceMax: "",
     sort: "",
     skip: "",
-    limit: ""
+    limit: 25,
+    nbPages: 1,
+    olbTotalPages: 1,
+    page: 1
   };
+  pagesToDisplay = () => {
+    let pagesToDisplayTab = [];
+    for (let i = 0; i < this.state.nbPages / this.state.limit; i++) {
+      pagesToDisplayTab.push(i + 1);
+    }
 
+    return pagesToDisplayTab;
+  };
   displayItems = () => {
     console.log("display");
     return this.state.listItems.map(item => {
@@ -42,8 +52,12 @@ class Offer extends React.Component {
       this.searchFilters(event);
     }
   };
-  searchFilters = event => {
+
+  getPages = (page, event) => {
     event.preventDefault();
+    console.log("go to page : ", page);
+    this.setState({ page, skip: (page - 1) * this.state.limit });
+
     axios
       .get("https://leboncoin-api.herokuapp.com/api/offer/", {
         params: {
@@ -51,20 +65,52 @@ class Offer extends React.Component {
           priceMin: this.state.priceMin,
           priceMax: this.state.priceMax,
           sort: this.state.sort,
-          skip: this.state.skip,
+          skip: (page - 1) * this.state.limit,
           limit: this.state.limit
         }
       })
       .then(response => {
-        this.setState({ listItems: response.data });
+        this.setState({
+          listItems: response.data.slice(0, this.state.limit)
+        });
+        console.log("response page: ", response.data);
+      });
+  };
+
+  searchFilters = event => {
+    event.preventDefault();
+
+    axios
+      .get("https://leboncoin-api.herokuapp.com/api/offer/", {
+        params: {
+          title: this.state.title,
+          priceMin: this.state.priceMin,
+          priceMax: this.state.priceMax,
+          sort: this.state.sort
+        }
+      })
+      .then(response => {
+        this.setState({
+          listItems: response.data.slice(0, this.state.limit),
+          nbPages: response.data.length
+        });
         console.log(response.data);
       });
   };
   render() {
+    const nbPagesDisplayed = this.pagesToDisplay();
+
+    const pagesRender = nbPagesDisplayed.map(page => {
+      return (
+        <li key={page} onClick={event => this.getPages(page, event)}>
+          {page}
+        </li>
+      );
+    });
     return (
       <div>
         <div>
-          <form onSubmit={this.searchFilters}>
+          <form className="form-offers" onSubmit={this.searchFilters}>
             <div>
               <input
                 placeholder="Que recherchez vous?"
@@ -76,17 +122,21 @@ class Offer extends React.Component {
               <button>Rechercher</button>
             </div>
             <div>
-              <label htmlFor="priceMin">Prix entre</label>
+              <label htmlFor="priceMin">
+                Prix entre &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </label>
               <input
-                placeholder="prix min"
+                placeholder="Prix min"
                 id="priceMin"
                 type="number"
                 name="priceMin"
                 onChange={this.handleChange}
               />
-              <label htmlFor="priceMin">et</label>
+              <label htmlFor="priceMin">
+                &nbsp;&nbsp;&nbsp;et&nbsp;&nbsp;&nbsp;
+              </label>
               <input
-                placeholder="prix max"
+                placeholder="Prix max"
                 id="priceMax"
                 type="number"
                 name="priceMax"
@@ -94,17 +144,19 @@ class Offer extends React.Component {
               />
 
               <select onChange={this.handleChange} name="sort">
-                <option selected value="date-desc">
-                  Plus récentes
+                <option defaultValue value="date-desc">
+                  Tri : Plus récentes
                 </option>
                 <option value="date-asc">Plus anciennes</option>
-                <option value="price-asc">Moins chères</option>
-                <option value="price-desc">Plus chères</option>
+                <option value="price-desc">Moins chères</option>
+                <option value="price-asc">Plus chères</option>
               </select>
             </div>
           </form>
         </div>
+        <div className="list-pages">{pagesRender}</div>
         <div className="container-offers">{this.displayItems()}</div>
+        <div className="list-pages">{pagesRender}</div>
       </div>
     );
   }
@@ -113,7 +165,11 @@ class Offer extends React.Component {
     axios
       .get("https://leboncoin-api.herokuapp.com/api/offer/")
       .then(response => {
-        this.setState({ listItems: response.data });
+        this.setState({
+          listItems: response.data.slice(0, this.state.limit),
+          nbPages: response.data.length,
+          oldTotalPages: response.data.length
+        });
         console.log(response.data);
       });
   }

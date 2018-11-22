@@ -5,7 +5,7 @@
   background-color: white;
   display: flex;
   margin: 5px auto;
-  width: 80%;
+  width: 100%;
 }
 .card-offers:hover {
   cursor: pointer;
@@ -34,12 +34,81 @@
   font-weight: bold;
 }
 
-form button {
+.form-offers {
+  background-color: #e6e6e6;
+}
+
+.form-offers > div {
+  display: flex;
+  align-items: center;
+}
+
+.form-offers > div > button {
+  flex: 1;
+  margin-top: 15px;
   background-color: #5082d1;
   color: white;
   border-radius: 5px;
   padding: 0 50px;
   border: none;
+  line-height: 25px;
+  height: 40px;
+  margin-left: 30px;
+  font-size: 20px;
+}
 
-  line-height: 40px;
+.form-offers > div > label {
+  font-weight: 400;
+}
+.form-offers > div > input {
+  flex: 2;
+  margin-top: 15px;
+  height: 40px;
+  padding: 0 20px;
+}
+
+.form-offers > div * {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+select {
+  padding-left: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-radius: 5px;
+  margin: 0;
+  height: 40px;
+  width: 380px;
+  margin-left: 60px;
+  font-size: 15px;
+  background-color: white;
+  background-image: linear-gradient(45deg, transparent 50%, black 50%),
+    linear-gradient(135deg, black 50%, transparent 50%),
+    linear-gradient(to right, white, white);
+  background-position: calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px), 100% 0;
+  background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+  background-repeat: no-repeat;
+}
+
+.list-pages {
+  display: flex;
+  justify-content: center;
+}
+
+.list-pages > li {
+  margin: 20px;
+  padding: 10px;
+  background-color: #e6e6e6;
+}
+
+.list-pages > li:hover,
+.form-offers button:hover,
+.form-offers select:hover {
+  cursor: pointer;
 }
