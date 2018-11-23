@@ -21,6 +21,13 @@
   height: 100px;
   margin: 5px;
 }
+.picture-offers img {
+  background-color: #fafafa;
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+}
 
 .title-offers {
   color: #466bb8;

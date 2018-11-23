@@ -24,7 +24,13 @@ class Offer extends React.Component {
   };
   displayItems = () => {
     console.log("display");
+    console.log(this.state.listItems);
+
     return this.state.listItems.map(item => {
+      const urlPicture =
+        item.pictures.length > 0
+          ? item.pictures[0].secure_url
+          : "https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg";
       return (
         <div
           key={item._id}
@@ -33,7 +39,9 @@ class Offer extends React.Component {
             this.props.history.push("/offer/" + item._id);
           }}
         >
-          <div className="picture-offers" />
+          <div className="picture-offers">
+            <img src={urlPicture} />
+          </div>
           <div>
             <div className="title-offers">{item.title}</div>
             <div className="price-offers">{`${item.price} €`}</div>

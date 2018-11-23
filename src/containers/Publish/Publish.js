@@ -1,21 +1,25 @@
 import React, { Component } from "react";
+import ReactFileReader from "react-file-reader";
 import axios from "axios";
 import "./styles.css";
 class Publish extends Component {
   state = {
     title: "",
     description: "",
-    price: null
+    price: "",
+    files: []
   };
   onSubmit = event => {
     event.preventDefault();
+
     axios
       .post(
         "https://leboncoin-api.herokuapp.com/api/offer/publish",
         {
           title: this.state.title,
           description: this.state.description,
-          price: this.state.price
+          price: this.state.price,
+          files: this.state.files
         },
         {
           headers: { authorization: "Bearer " + this.props.user.token }
@@ -32,6 +36,13 @@ class Publish extends Component {
         alert("erreur ", err.message);
       });
   };
+  handleFiles = files => {
+    console.log(files);
+    const newFiles = [...this.state.files, ...files.base64];
+    this.setState({
+      files: newFiles
+    });
+  };
 
   handleChange = event => {
     const target = event.target;
@@ -42,6 +53,32 @@ class Publish extends Component {
   };
 
   render() {
+    const filesArray = this.state.files.map((file, i) => (
+      <div>
+        <img
+          key={i}
+          onClick={() => {
+            // En cliquant sur l'image, le fichier sera supprimé
+            const newFiles = [...this.state.files];
+            newFiles.splice(i, 1);
+            this.setState({ files: newFiles });
+          }}
+          src={file}
+          alt="Annonce"
+        />
+        <button
+          onClick={() => {
+            const saveFiles = [...this.state.files];
+            saveFiles.splice(i, 1);
+            this.setState({ files: saveFiles });
+          }}
+        >
+          x
+        </button>
+      </div>
+    ));
+    const displayAddButton =
+      this.state.files.length > 5 ? "hide-btn" : "show-btn";
     return (
       <div>
         <form onSubmit={this.onSubmit}>
@@ -70,6 +107,20 @@ class Publish extends Component {
               value={this.state.price}
               onChange={this.handleChange}
             />
+            <div>
+              <ReactFileReader
+                fileTypes={[".png", ".jpg"]}
+                base64={true}
+                multipleFiles={true} // `false si une seule image`
+                handleFiles={this.handleFiles}
+              >
+                <span className={`btn-upload-img ${displayAddButton}`}>
+                  Choisir des images
+                </span>
+              </ReactFileReader>
+
+              {filesArray}
+            </div>
           </div>
           <button className="btn-publish" type="submit">
             Valider

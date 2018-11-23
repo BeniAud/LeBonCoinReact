@@ -6,17 +6,24 @@ class Offer extends React.Component {
     title: "",
     price: "",
     description: "",
-    creator: {}
+    creator: {},
+    urlsList: []
   };
   render() {
     console.log("offer");
     console.log(this.state);
+    const urlPicture =
+      this.state.urlsList.length > 0
+        ? this.state.urlsList[0].secure_url
+        : "https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg";
     if (this.state.title)
       return (
         <div className="container-offer">
           <div className="card-offer">
             <div className="card-offer-header">
-              <div className="picture-offer" />
+              <div className="picture-offer">
+                <img src={urlPicture} />
+              </div>
               <div className="title-price-offer">
                 <div className="title-offer">{this.state.title}</div>
                 <div className="price-offer">{`${this.state.price} €`}</div>
@@ -57,7 +64,8 @@ class Offer extends React.Component {
           title: response.data.title,
           description: response.data.description,
           price: response.data.price,
-          creator: response.data.creator
+          creator: response.data.creator,
+          urlsList: response.data.pictures
         });
         console.log(response.data);
       });

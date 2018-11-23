@@ -30,3 +30,17 @@
   border: none;
   margin-top: 20px;
 }
+
+.btn-upload-img {
+  border: solid 1px black;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.hide-btn {
+  display: none;
+}
+
+.show-btn {
+  display: inline;
+}
