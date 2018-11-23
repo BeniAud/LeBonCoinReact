@@ -40,3 +40,14 @@
   width: 400px;
   border-bottom: solid 2px #f36b36;
 }
+.btn {
+  background-color: #f16b3f;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 7px 20px;
+  width: 200px;
+  height: 50px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}

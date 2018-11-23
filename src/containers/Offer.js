@@ -1,19 +1,47 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./Offer.css";
+
 class Offer extends Component {
   state = {
     annonce: {}
   };
-  render() {
-    console.log(this.props);
+  renderPicture(annonce) {
+    console.log(annonce);
+    const tabPicture = [];
+    for (let i = 0; i < annonce.pictures.length; i++) {
+      tabPicture.push(
+        <img
+          src={annonce.pictures[i].secure_url}
+          width="100"
+          height="100"
+          alt="imgpublish"
+        />
+      );
+    }
 
+    for (let j = annonce.pictures.length; j < 3; j++) {
+      tabPicture.push(
+        <img
+          src="assets/Img/placeholder.png"
+          width="150"
+          height="160"
+          alt="imgpublish"
+        />
+      );
+    }
+    return tabPicture;
+  }
+
+  render() {
     if (this.state.annonce._id) {
       return (
         <div>
           <div className="container-selection">
             <div className="annonceSelectionnee">
-              <div className="PHOTO">PHOTO</div>
+              <div className="PHOTO">
+                {this.renderPicture(this.state.annonce)}
+              </div>
               <div className="titleSelection">
                 <h3>{this.state.annonce.title}</h3>
               </div>
@@ -40,8 +68,10 @@ class Offer extends Component {
         </div>
       );
     }
+
     return <p>En cours de chargement ...</p>;
   }
+
   componentDidMount() {
     axios
       .get(

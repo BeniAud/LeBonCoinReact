@@ -57,6 +57,11 @@
   color: #f36b36;
   background-color: #fafafa;
   border: none;
+  cursor: pointer;
+  outline: none;
+}
+.buttonpage:hover {
+  opacity: 50%;
 }
 .button-container-page {
   display: flex;

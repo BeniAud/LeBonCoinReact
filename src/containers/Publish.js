@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./Publish.css";
-
+import ReactFileReader from "react-file-reader";
 class Publish extends Component {
   state = {
+    files: [],
     title: "",
     text: "",
     price: ""
+  };
+  handleFiles = files => {
+    console.log(files);
+    const newFiles = [...this.state.files, ...files.base64];
+    this.setState({
+      files: newFiles
+    });
   };
 
   handleChange = event => {
@@ -26,7 +34,8 @@ class Publish extends Component {
         {
           title: this.state.title,
           description: this.state.description,
-          price: Number(this.state.price)
+          price: Number(this.state.price),
+          files: this.state.files
         },
         {
           headers: {
@@ -47,6 +56,22 @@ class Publish extends Component {
   };
 
   render() {
+    const filesArray = [];
+    for (let i = 0; i < this.state.files.length; i++) {
+      filesArray.push(
+        <img
+          key={i}
+          onClick={() => {
+            // En cliquant sur l'image, le fichier sera supprimé
+            const newFiles = [...this.state.files];
+            newFiles.splice(i, 1);
+            this.setState({ files: newFiles });
+          }}
+          src={this.state.files[i]}
+          alt="Annonce"
+        />
+      );
+    }
     return (
       <div>
         <div className="publish">
@@ -57,6 +82,7 @@ class Publish extends Component {
             <div>
               <label htmlFor="title">Titre de votre annonce</label>
             </div>
+
             <div>
               <input
                 className="input-publish"
@@ -66,6 +92,24 @@ class Publish extends Component {
                 value={this.state.title}
                 onChange={this.handleChange}
               />
+            </div>
+            <div>
+              <ReactFileReader
+                fileTypes={[".png", ".jpg"]}
+                base64={true}
+                multipleFiles={true} // `false si une seule image`
+                handleFiles={this.handleFiles}
+              >
+                <button type="button" className="btn">
+                  Télécharger des photos
+                </button>
+                <span style={{ color: "red" }}>
+                  <br />
+                  Attention ! Format .png et .jpg UNIQUEMENT{" "}
+                </span>
+              </ReactFileReader>
+
+              {filesArray}
             </div>
             <div>
               <label htmlFor="description">Texte de votre annonce</label>
